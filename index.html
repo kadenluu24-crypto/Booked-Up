@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Booked Up AI chat assistants help local businesses capture leads and appointment requests 24/7.">
+<title>Booked Up | AI Chat Assistants</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --panel: #15151f;
+  --purple: #927aff;
+  --text: #f4f3fa;
+  --muted: #a2a1b3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: min(1150px, 90%);
+  margin: auto;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+header {
+  padding: 20px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #171721;
+  border: 1px solid #30303c;
+  padding: 15px 25px;
+  border-radius: 50px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.logo span { color: var(--purple); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a:not(.btn) { color: var(--muted); }
+
+.btn {
+  display: inline-block;
+  background: var(--purple);
+  color: #090910;
+  padding: 13px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: .2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 55px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #454052;
+  border-radius: 30px;
+  padding: 8px 17px;
+  color: #c9c1ff;
+  font-size: 13px;
+}
+
+.hero h1 {
+  font-size: clamp(45px, 6vw, 76px);
+  line-height: 1.05;
+  margin: 25px 0;
+}
+
+.purple { color: var(--purple); }
+
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 530px;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  border: 1px solid #555263;
+  color: white;
+  background: transparent;
+}
+
+.chat-card {
+  background: var(--panel);
+  border: 1px solid #353343;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 20px 70px #7355ff20;
+}
+
+.chat-title {
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.message {
+  padding: 13px 17px;
+  margin-bottom: 13px;
+  max-width: 90%;
+  font-size: 14px;
+}
+
+.user {
+  background: var(--purple);
+  color: #090910;
+  border-radius: 18px 18px 3px 18px;
+  margin-left: auto;
+}
+
+.bot {
+  background: #292837;
+  border-radius: 18px 18px 18px 3px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-bottom: 90px;
+}
+
+.feature {
+  padding: 10px 18px;
+  border: 1px solid #33323f;
+  border-radius: 30px;
+  color: #c3c1d1;
+  font-size: 14px;
+}
+
+section { padding-bottom: 100px; }
+
+.section-title {
+  font-size: clamp(36px, 5vw, 55px);
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid #343342;
+  padding: 30px;
+  border-radius: 22px;
+}
+
+.number {
+  color: var(--purple);
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.card h3 {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card.popular {
+  border: 1px solid var(--purple);
+  box-shadow: 0 15px 50px #927aff18;
+}
+
+.popular-label {
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.price {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.price span {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.setup {
+  color: #c5bdff;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin: 22px 0;
+  flex-grow: 1;
+}
+
+.pricing-card li {
+  margin-bottom: 12px;
+  color: #d0cfdb;
+  font-size: 14px;
+}
+
+.pricing-card li::before {
+  content: "✓ ";
+  color: var(--purple);
+  font-weight: bold;
+}
+
+.pricing-card .btn {
+  text-align: center;
+  margin-top: auto;
+}
+
+.faq {
+  max-width: 850px;
+}
+
+details {
+  background: var(--panel);
+  border: 1px solid #343342;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+details p {
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.contact {
+  text-align: center;
+  background: linear-gradient(130deg, #292052, #171521);
+  border: 1px solid #45405f;
+  border-radius: 30px;
+  padding: 70px 25px;
+}
+
+.contact h2 {
+  font-size: clamp(35px, 5vw, 60px);
+  margin-bottom: 15px;
+}
+
+.contact p {
+  color: #c5c2d2;
+  margin-bottom: 25px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777687;
+  border-top: 1px solid #25242f;
+  font-size: 13px;
+}
+
+@media(max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 60px; }
+  .grid { grid-template-columns: 1fr; }
+  nav { border-radius: 20px; flex-wrap: wrap; gap: 15px; }
+  .nav-links { flex-wrap: wrap; gap: 15px; }
+}
+
+@media(max-width: 480px) {
+  .nav-links { font-size: 13px; }
+  .hero h1 { font-size: 46px; }
+  .buttons .btn { width: 100%; text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="container">
+<nav>
+  <a href="#" class="logo">Booked Up<span>.</span></a>
+
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="btn">Get Started</a>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<div class="container">
+
+<section class="hero">
+  <div>
+    <span class="tag">✦ AI Chat Assistants for Local Businesses</span>
+
+    <h1>Turn website visitors into <span class="purple">booked</span> appointments.</h1>
+
+    <p>
+      Booked Up helps local businesses capture leads, answer customer questions,
+      and receive appointment requests automatically — 24 hours a day, 7 days a week.
+    </p>
+
+    <div class="buttons">
+      <a href="#pricing" class="btn">View Pricing</a>
+      <a href="#contact" class="btn btn-outline">Get a Free Demo</a>
+    </div>
+  </div>
+
+  <div class="chat-card">
+    <div class="chat-title">LIVE CHAT DEMO · SAMPLE CONVERSATION</div>
+
+    <div class="message user">
+      Hi! Can I schedule an appointment for tomorrow?
+    </div>
+
+    <div class="message bot">
+      Absolutely! What service are you interested in?
+    </div>
+
+    <div class="message user">
+      I need a car detailing appointment.
+    </div>
+
+    <div class="message bot">
+      Great! Can I get your name and phone number so the team can confirm your appointment?
+    </div>
+
+    <div class="message user">
+      Sam, 469-555-0123.
+    </div>
+
+    <div class="message bot">
+      Thanks, Sam! Your appointment request has been received.
+      The team will follow up shortly.
+    </div>
+  </div>
+</section>
+
+<div class="features">
+  <span class="feature">✓ 24/7 Customer Support</span>
+  <span class="feature">✓ Lead Collection</span>
+  <span class="feature">✓ Appointment Requests</span>
+  <span class="feature">✓ Instant Notifications</span>
+</div>
+
+<section id="how">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-subtitle">Three simple steps to start capturing more customers.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="number">01</div>
+      <h3>We Build Your Chatbot</h3>
+      <p>We customize your AI assistant using your business information, services, and frequently asked questions.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">02</div>
+      <h3>Install It On Your Website</h3>
+      <p>We add a chat assistant to your website so customers can interact with your business anytime.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">03</div>
+      <h3>Capture More Leads</h3>
+      <p>Your chatbot collects customer information and appointment requests for your team to follow up on.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2 class="section-title">Simple Pricing</h2>
+  <p class="section-subtitle">Choose the plan that works best for your business.</p>
+
+  <div class="grid">
+
+    <div class="card pricing-card">
+      <h3>Starter</h3>
+      <div class="price">$99<span>/month</span></div>
+      <div class="setup">+$199 one-time setup</div>
+
+      <p>Perfect for small businesses getting started with AI.</p>
+
+      <ul>
+        <li>Website AI chatbot</li>
+        <li>24/7 automated responses</li>
+        <li>Lead collection</li>
+        <li>Email notifications</li>
+        <li>Up to 250 conversations/month</li>
+      </ul>
+
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+
+    <div class="card pricing-card popular">
+      <div class="popular-label">MOST POPULAR</div>
+      <h3>Growth</h3>
+      <div class="price">$199<span>/month</span></div>
+      <div class="setup">+$299 one-time setup</div>
+
+      <p>For businesses ready to capture more appointments.</p>
+
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Appointment requests</li>
+        <li>Text-message notifications</li>
+        <li>Lead tracking</li>
+        <li>Monthly chatbot updates</li>
+        <li>Up to 750 conversations/month</li>
+      </ul>
+
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+
+    <div class="card pricing-card">
+      <h3>Pro</h3>
+      <div class="price">$349<span>/month</span></div>
+      <div class="setup">+$499 one-time setup</div>
+
+      <p>For growing businesses that need more automation.</p>
+
+      <ul>
+        <li>Everything in Growth</li>
+        <li>Advanced customization</li>
+        <li>Priority support</li>
+        <li>Monthly lead reports</li>
+        <li>Multiple service categories</li>
+        <li>Up to 2,000 conversations/month</li>
+      </ul>
+
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-subtitle">Everything you need to know about Booked Up.</p>
+
+  <details>
+    <summary>Do I need technical experience?</summary>
+    <p>No. We handle the chatbot setup, customization, and website installation.</p>
+  </details>
+
+  <details>
+    <summary>Will the chatbot work 24/7?</summary>
+    <p>Yes. Your chatbot can respond to customer questions at any time, even when your business is closed.</p>
+  </details>
+
+  <details>
+    <summary>Can it schedule appointments?</summary>
+    <p>It can collect appointment requests and send them to your team. Direct calendar booking depends on the integrations configured for your business.</p>
+  </details>
+
+  <details>
+    <summary>Do I need a website?</summary>
+    <p>Yes, this website chatbot service is designed to be installed on an existing business website.</p>
+  </details>
+
+  <details>
+    <summary>Can I cancel my subscription?</summary>
+    <p>Yes. Our plans are designed around monthly subscriptions.</p>
+  </details>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>Ready to Get Booked Up?</h2>
+    <p>Let's build an AI assistant that helps your business capture more customers.</p>
+
+    <a href="mailto:YOUR_EMAIL@example.com?subject=Booked%20Up%20Free%20Demo" class="btn">
+      Request a Free Demo
+    </a>
+
+    <p style="margin-top:20px;">
+      Or call us: <a href="tel:4698908029">469-890-8029</a>
+    </p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  © 2026 Booked Up. All rights reserved.
+  <br>
+  AI Chat Assistants for Local Businesses.
+</footer>
+
+</body>
+</html>
